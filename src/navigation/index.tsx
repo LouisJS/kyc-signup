@@ -1,14 +1,23 @@
-import { Feather } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Text, View } from 'react-native';
 
-import Details from '../screens/details';
-import Overview from '../screens/overview';
+// import Overview from '../screens/overview';
+
+import EmailScreen from '~/screens/email';
+import FirstnameScreen from '~/screens/firstname';
+import LastnameScreen from '~/screens/lastname';
+import PhoneScreen from '~/screens/phone';
+import ResidenceScreen from '~/screens/residence';
+import SummaryScreen from '~/screens/summary';
 
 export type RootStackParamList = {
   Overview: undefined;
-  Details: { name: string };
+  Firstname: undefined;
+  Lastname: undefined;
+  Email: undefined;
+  Phone: undefined;
+  Residence: undefined;
+  Summary: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -16,9 +25,18 @@ const Stack = createStackNavigator<RootStackParamList>();
 export default function RootStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Overview">
-        <Stack.Screen name="Overview" component={Overview} />
-        <Stack.Screen
+      <Stack.Navigator
+        initialRouteName="Firstname"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="Firstname" component={FirstnameScreen} />
+        <Stack.Screen name="Lastname" component={LastnameScreen} />
+        <Stack.Screen name="Email" component={EmailScreen} />
+        <Stack.Screen name="Phone" component={PhoneScreen} />
+        <Stack.Screen name="Residence" component={ResidenceScreen} />
+        <Stack.Screen name="Summary" component={SummaryScreen} />
+        {/* <Stack.Screen
           name="Details"
           component={Details}
           options={({ navigation }) => ({
@@ -31,13 +49,13 @@ export default function RootStack() {
               </View>
             ),
           })}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = {
-  backButton: 'flex-row',
-  backButtonText: 'text-blue-500 ml-1',
-};
+// const styles = {
+//   backButton: 'flex-row',
+//   backButtonText: 'text-blue-500 ml-1',
+// };

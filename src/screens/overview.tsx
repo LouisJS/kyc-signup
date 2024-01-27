@@ -13,12 +13,13 @@ export default function Overview() {
     <View className={styles.container}>
       <View className={styles.main}>
         <View>
-          <Text className={styles.title}>Hello World</Text>
+          <Text className="text-[64px] font-bold text-primary-default">Hello World</Text>
           <Text className={styles.subtitle}>This is the first page of your app.</Text>
         </View>
         <TouchableOpacity
           className={styles.button}
-          onPress={() => navigation.navigate('Details', { name: 'Dan' })}>
+          onPress={() => {}} // navigation.navigate('Details', { : 'Dan' })}
+        >
           <Text className={styles.buttonText}>Show Details</Text>
         </TouchableOpacity>
       </View>
