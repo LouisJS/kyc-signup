@@ -2,8 +2,10 @@ import 'react-native-gesture-handler';
 
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 import { useCallback } from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { create } from 'zustand';
 
 import RootStack from './src/navigation';
 
@@ -28,7 +30,8 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView className="flex flex-1" onLayout={onLayoutRootView}>
+      <StatusBar style="dark" />
+      <SafeAreaView className="flex flex-1 bg-merino" onLayout={onLayoutRootView}>
         <RootStack />
       </SafeAreaView>
     </SafeAreaProvider>
