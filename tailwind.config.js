@@ -12,6 +12,7 @@ module.exports = {
         merino: '#F4EADF',
         grey: {
           150: '#EDEEFE',
+          500: '#7F8590',
           800: '#212836',
         },
       },

@@ -23,7 +23,10 @@ const useSignUpStore = create<SignUpStore>((set) => ({
     phone: '',
     residence: '',
   },
-  setValue: (id, value) => set(() => ({ [id]: value })),
+  setValue: (id, value) =>
+    set((state) => ({
+      signUpForm: { ...state.signUpForm, [id]: value },
+    })),
 }));
 
 export default useSignUpStore;
