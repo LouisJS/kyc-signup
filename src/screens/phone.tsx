@@ -36,7 +36,7 @@ const PhoneScreen = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({
     defaultValues: {
       phone,
@@ -83,7 +83,12 @@ const PhoneScreen = () => {
               {errors.phone.message}
             </Text>
           )}
-          <Button label="Continuer" onPress={handleSubmit(onSubmit)} className="self-end mt-4" />
+          <Button
+            label="Continuer"
+            onPress={handleSubmit(onSubmit)}
+            className="self-end mt-4"
+            disabled={!isValid}
+          />
         </View>
       </LinearGradient>
     </KeyboardAvoidingView>

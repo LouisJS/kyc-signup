@@ -25,7 +25,7 @@ import useSignUpStore from '~/state/signUpStore';
 
 const schema = z
   .object({
-    residence: z.string(),
+    residence: z.string().min(1),
     searchResidence: z.string(),
   })
   .required();
@@ -50,7 +50,8 @@ const ResidenceScreen = () => {
     watch,
     handleSubmit,
     setValue: setFormValue,
-    formState: { errors },
+    formState: { errors, isValid },
+    trigger,
   } = useForm<FormData>({
     defaultValues: {
       residence,
@@ -74,11 +75,14 @@ const ResidenceScreen = () => {
   const [selectedItemId, setSelectedItemId] = useState<string>('');
 
   // on Select a Residence, update both searchResidence value and residence value
-  const selectResidence = (id: string, selectedResidence: string) => {
+  const selectResidence = async (id: string, selectedResidence: string) => {
     setFormValue('searchResidence', selectedResidence);
     setFormValue('residence', selectedResidence);
 
     setSelectedItemId(id);
+
+    // Manually trigger form validation
+    await trigger();
   };
 
   return (
@@ -132,10 +136,12 @@ const ResidenceScreen = () => {
               {errors.residence.message}
             </Text>
           )}
-          <>
-            {isFetchResidenceDataLoading && <ActivityIndicator className="absolute bottom-6" />}
-            <Button label="Continuer" onPress={handleSubmit(onSubmit)} className="self-end mt-4" />
-          </>
+          <View className="flex-row justify-between items-center mt-4">
+            <View>
+              {isFetchResidenceDataLoading && <ActivityIndicator color="#4D50F4" size="large" />}
+            </View>
+            <Button label="Continuer" onPress={handleSubmit(onSubmit)} disabled={!isValid} />
+          </View>
         </View>
       </LinearGradient>
     </KeyboardAvoidingView>

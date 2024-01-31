@@ -32,7 +32,7 @@ const EmailScreen = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({
     defaultValues: {
       email,
@@ -81,7 +81,12 @@ const EmailScreen = () => {
               {errors.email.message}
             </Text>
           )}
-          <Button label="Continuer" onPress={handleSubmit(onSubmit)} className="self-end mt-4" />
+          <Button
+            label="Continuer"
+            onPress={handleSubmit(onSubmit)}
+            className="self-end mt-4"
+            disabled={!isValid}
+          />
         </View>
       </LinearGradient>
     </KeyboardAvoidingView>
