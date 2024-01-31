@@ -46,7 +46,7 @@ const useFetchResidenceData = (residence: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!residence) return; // Pour éviter des appels API inutiles
+      if (!residence) return;
 
       setLoading(true);
       try {

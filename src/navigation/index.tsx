@@ -1,8 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// import Overview from '../screens/overview';
-
 import EmailScreen from '~/screens/email';
 import FirstnameScreen from '~/screens/firstname';
 import LastnameScreen from '~/screens/lastname';
@@ -11,7 +9,6 @@ import ResidenceScreen from '~/screens/residence';
 import SummaryScreen from '~/screens/summary';
 
 export type RootStackParamList = {
-  Overview: undefined;
   Firstname: undefined;
   Lastname: undefined;
   Email: undefined;
@@ -36,26 +33,7 @@ export default function RootStack() {
         <Stack.Screen name="Phone" component={PhoneScreen} />
         <Stack.Screen name="Residence" component={ResidenceScreen} />
         <Stack.Screen name="Summary" component={SummaryScreen} />
-        {/* <Stack.Screen
-          name="Details"
-          component={Details}
-          options={({ navigation }) => ({
-            headerLeft: () => (
-              <View className={styles.backButton}>
-                <Feather name="chevron-left" size={16} color="#007AFF" />
-                <Text className={styles.backButtonText} onPress={navigation.goBack}>
-                  Back
-                </Text>
-              </View>
-            ),
-          })}
-        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-// const styles = {
-//   backButton: 'flex-row',
-//   backButtonText: 'text-blue-500 ml-1',
-// };
