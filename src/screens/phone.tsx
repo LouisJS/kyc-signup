@@ -4,7 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, Text, TextInput, View } from 'react-native';
 import * as z from 'zod';
 
 import { RootStackParamList } from '../navigation';
@@ -49,7 +49,10 @@ const PhoneScreen = () => {
   };
 
   return (
-    <>
+    <KeyboardAvoidingView
+      behavior="padding"
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 50 : 0}
+      style={{ flex: 1 }}>
       <ProgressBar value={4 / 6} initialValue={3 / 6} />
       <LinearGradient colors={['#F4EADF', '#FFFFFF']} className="flex flex-1 px-6">
         <Text className="font-raleway-extrabold text-3xl tracking-tighter">
@@ -70,6 +73,7 @@ const PhoneScreen = () => {
                 dataDetectorTypes="phoneNumber"
                 keyboardType="phone-pad"
                 textContentType="telephoneNumber"
+                defaultValue={value}
               />
             )}
             name="phone"
@@ -82,7 +86,7 @@ const PhoneScreen = () => {
           <Button label="Continuer" onPress={handleSubmit(onSubmit)} className="self-end mt-4" />
         </View>
       </LinearGradient>
-    </>
+    </KeyboardAvoidingView>
   );
 };
 

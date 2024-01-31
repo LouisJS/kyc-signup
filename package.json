@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
+    "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "expo": "~49.0.11",
     "expo-font": "~11.4.0",

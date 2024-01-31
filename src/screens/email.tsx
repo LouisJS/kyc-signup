@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Controller, useForm } from 'react-hook-form';
-import { Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, Text, TextInput, View } from 'react-native';
 import * as z from 'zod';
 
 import { RootStackParamList } from '../navigation';
@@ -45,7 +45,10 @@ const EmailScreen = () => {
   };
 
   return (
-    <>
+    <KeyboardAvoidingView
+      behavior="padding"
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 50 : 0}
+      style={{ flex: 1 }}>
       <ProgressBar value={3 / 6} initialValue={2 / 6} />
       <LinearGradient colors={['#F4EADF', '#FFFFFF']} className="flex flex-1 px-6">
         <Text className="font-raleway-extrabold text-3xl tracking-tighter">
@@ -68,6 +71,7 @@ const EmailScreen = () => {
                 textContentType="emailAddress"
                 autoComplete="email"
                 autoCapitalize="none"
+                defaultValue={value}
               />
             )}
             name="email"
@@ -80,7 +84,7 @@ const EmailScreen = () => {
           <Button label="Continuer" onPress={handleSubmit(onSubmit)} className="self-end mt-4" />
         </View>
       </LinearGradient>
-    </>
+    </KeyboardAvoidingView>
   );
 };
 

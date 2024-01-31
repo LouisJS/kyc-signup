@@ -66,6 +66,7 @@ const FirstnameScreen = () => {
                 onChangeText={onChange}
                 value={value}
                 returnKeyType="next"
+                defaultValue={value}
               />
             )}
             name="firstName"
